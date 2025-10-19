@@ -1,60 +1,64 @@
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Basketball Timer</title>
-        <link rel="stylesheet" href="./src/style.css">
-    </head>
-    <body>
-        <div class="timer">
-            <div class="timer-text">
-                <span id="timer-minutes" contenteditable="true">--</span>
-                <span>:</span>
-                <span id="timer-seconds" contenteditable="true">--</span>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basketball Timer</title>
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <div class="timer">
+      <div class="timer-text">
+        <span id="timer-minutes" contenteditable="true">--</span>
+        <span>:</span>
+        <span id="timer-seconds" contenteditable="true">--</span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="team-container">
+        <h3 contenteditable="true" class="team-name">
+          HOME <span id="winner-home">🎖️</span>
+        </h3>
+        <div class="team-score-box">
+          <h1 class="team-score-text" id="team-home-score">_</h1>
         </div>
-        <div class="container">
-            <div class="team-container">
-                <h3 contenteditable="true" class="team-name">HOME <span id="winner-home">🎖️</span></h3>
-                <div class="team-score-box">
-                    <h1 class="team-score-text" id="team-home-score">_</score>
-                </div>
-                <ul class="team-points-buttons">
-                    <li><button class="btn" id="team-home-points-1">+1</button></li>
-                    <li><button class="btn" id="team-home-points-2">+2</button></li>
-                    <li><button class="btn" id="team-home-points-3">+3</button></li>
-                </ul>
-                <div class="team-fouls-container">
-                    <div class="fouls-box" id="team-home-fouls-count"></div>
-                    <p class="team-fouls-text">Fouls</p>
-                    <button class="btn" id="team-home-inc-fouls">⬆️</button>
-                    <button class="btn" id="team-home-dec-fouls">⬇️</button>
-                </div>
-            </div>
-            <div class="team-container">
-                <h3 contenteditable="true" class="team-name">GUEST <span id="winner-guest">🎖️</span></h3>
-                <div class="team-score-box">
-                    <h1 class="team-score-text" id="team-guest-score">_</score>
-                </div>
-                <ul class="team-points-buttons">
-                    <li><button class="btn" id="team-guest-points-1">+1</button></li>
-                    <li><button class="btn" id="team-guest-points-2">+2</button></li>
-                    <li><button class="btn" id="team-guest-points-3">+3</button></li>
-                </ul>
-                <div class="team-fouls-container">
-                    <div class="fouls-box" id="team-guest-fouls-count"></div>
-                    <p class="team-fouls-text">Fouls</p>
-                    <button class="btn" id="team-guest-inc-fouls">⬆️</button>
-                    <button class="btn" id="team-guest-dec-fouls">⬇️</button>
-                </div>
-            </div>
+        <ul class="team-points-buttons">
+          <li><button class="btn" id="team-home-points-1">+1</button></li>
+          <li><button class="btn" id="team-home-points-2">+2</button></li>
+          <li><button class="btn" id="team-home-points-3">+3</button></li>
+        </ul>
+        <div class="team-fouls-container">
+          <div class="fouls-box" id="team-home-fouls-count"></div>
+          <p class="team-fouls-text">Fouls</p>
+          <button class="btn" id="team-home-inc-fouls">⬆️</button>
+          <button class="btn" id="team-home-dec-fouls">⬇️</button>
         </div>
-        <div class="additional-buttons">
-            <button class="btn" id="btn-start">START</button>
-            <button class="btn" id="btn-pause">PAUSE</button>
-            <button class="btn" id="btn-stop">STOP</button>
-            <button class="btn" id="btn-reset">RESET</button>
+      </div>
+      <div class="team-container">
+        <h3 contenteditable="true" class="team-name">
+          GUEST <span id="winner-guest">🎖️</span>
+        </h3>
+        <div class="team-score-box">
+          <h1 class="team-score-text" id="team-guest-score">_</h1>
         </div>
-        <script src="./src/main.ts"></script>
-    </body>
+        <ul class="team-points-buttons">
+          <li><button class="btn" id="team-guest-points-1">+1</button></li>
+          <li><button class="btn" id="team-guest-points-2">+2</button></li>
+          <li><button class="btn" id="team-guest-points-3">+3</button></li>
+        </ul>
+        <div class="team-fouls-container">
+          <div class="fouls-box" id="team-guest-fouls-count"></div>
+          <p class="team-fouls-text">Fouls</p>
+          <button class="btn" id="team-guest-inc-fouls">⬆️</button>
+          <button class="btn" id="team-guest-dec-fouls">⬇️</button>
+        </div>
+      </div>
+    </div>
+    <div class="additional-buttons">
+      <button class="btn" id="btn-start">START</button>
+      <button class="btn" id="btn-pause">PAUSE</button>
+      <button class="btn" id="btn-stop">STOP</button>
+      <button class="btn" id="btn-reset">RESET</button>
+    </div>
+    <script src="./src/main.ts"></script>
+  </body>
 </html>
