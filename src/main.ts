@@ -12,58 +12,105 @@ const resetBtnEl = document.getElementById("btn-reset");
 const timerMinutesEl = document.getElementById("timer-minutes");
 const timerSecondsEl = document.getElementById("timer-seconds");
 
+function defineTimer(initialValue?: number): {
+  getSeconds: () => number | undefined;
+  setSeconds: (
+    callback?: ((seconds: number | undefined) => number) | number,
+  ) => void;
+} {
+  let seconds: number | undefined = initialValue;
+
+  function getSeconds(): number | undefined {
+    return seconds;
+  }
+
+  function setSeconds(
+    callback?: ((previous: number | undefined) => number) | number,
+  ): void {
+    if (typeof callback === "number" || typeof callback === "undefined") {
+      seconds = callback;
+      return;
+    }
+
+    if (typeof callback === "function") {
+      seconds = callback(seconds);
+      return;
+    }
+  }
+
+  return { getSeconds, setSeconds };
+}
+
 // global state
-let seconds: number | undefined;
+const { getSeconds, setSeconds } = defineTimer();
 let timer: number | undefined;
 
 // attach event listener to element
-const subscribe = function (
+const subscribeEventListener = function (
   el: HTMLElement | null,
   event: keyof HTMLElementEventMap,
   callback: () => void,
-) {
+): (() => void) | undefined {
   if (!el || !event || !callback) {
     return;
   }
 
   el.addEventListener(event, callback);
+
+  return function () {
+    el.removeEventListener(event, callback);
+  };
 };
 
 // start timer
-const startTimer = function () {
-  if (timer && typeof seconds === "number" && seconds > 0) {
+const startTimer = function (): void {
+  if (timer) {
     return;
   }
 
-  timer = setInterval(() => {
-    if (!seconds) {
-      seconds = 12 * 1;
-    }
+  timer = setInterval((): void => {
+    setSeconds((previous: number | undefined): number => {
+      if (!previous) {
+        return 12 * 1;
+      }
 
-    renderTime();
-    seconds--;
+      return previous - 1;
+    });
+    const seconds = getSeconds();
+    renderTime(seconds);
+
+    if (seconds === 0) {
+      if (!timer) {
+        return;
+      }
+
+      clearInterval(timer);
+      timer = undefined;
+    }
   }, 1000);
 };
 
-subscribe(startBtnEl, "click", startTimer);
+subscribeEventListener(startBtnEl, "click", startTimer);
 
 // stop timer
-const stopTimer = function () {
-  if (!timer) {
+const stopTimer = function (): void {
+  const seconds = getSeconds();
+  if (timer === undefined && !seconds) {
     return;
   }
 
   clearInterval(timer);
-  seconds = 0;
-  renderTime();
+  setSeconds(0);
+  const secondsAfterStop = getSeconds();
+  renderTime(secondsAfterStop);
   timer = undefined;
 };
 
-subscribe(stopBtnEl, "click", stopTimer);
+subscribeEventListener(stopBtnEl, "click", stopTimer);
 
 // pause timer
-const pauseTimer = function () {
-  if (!timer) {
+const pauseTimer = function (): void {
+  if (timer === undefined) {
     return;
   }
 
@@ -71,21 +118,28 @@ const pauseTimer = function () {
   timer = undefined;
 };
 
-subscribe(pauseBtnEl, "click", pauseTimer);
+subscribeEventListener(pauseBtnEl, "click", pauseTimer);
 
 // reset timer
-const resetTimer = function () {
-  clearInterval(timer);
-  timer = undefined;
+const resetTimer = function (): void {
+  const seconds = getSeconds();
+  if (timer === undefined && seconds === undefined) {
+    return;
+  }
 
-  timerMinutesEl!.textContent = "--";
-  timerSecondsEl!.textContent = "--";
+  clearInterval(timer);
+  setSeconds();
+  const secondsAfterReset = getSeconds();
+  renderTime(secondsAfterReset);
+  timer = undefined;
 };
 
-subscribe(resetBtnEl, "click", resetTimer);
+subscribeEventListener(resetBtnEl, "click", resetTimer);
 
-const renderTime = function (): void {
-  if (seconds === null || seconds === undefined) {
+const renderTime = function (seconds: number | undefined): void {
+  if (seconds === undefined) {
+    timerMinutesEl!.textContent = "--";
+    timerSecondsEl!.textContent = "--";
     return;
   }
 

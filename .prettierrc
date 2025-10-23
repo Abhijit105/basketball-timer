@@ -1,3 +1,4 @@
 {
-  "formatOnSave": true
+  "formatOnSave": true,
+  "printWidth": 80
 }
