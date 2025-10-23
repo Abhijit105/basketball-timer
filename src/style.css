@@ -1,150 +1,168 @@
-@font-face  {
-    src: url("../public/cursedtimerulil.ttf");
-    font-family: Cursed Timer Ulil;
+@font-face {
+  src: url("../public/cursedtimerulil.ttf");
+  font-family: Cursed Timer Ulil;
 }
 
-*   {
-    padding: 0;
-    margin: 0;
-    box-sizing: inherit;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
 }
 
-:root   {
-    --bgprimary: #1B244A;
-    --texttertiary: #9AABD8;
-    --bgsecondary: #080001;
-    --textprimary: #F94F6D;
-    --textsecondary: #EEEEEE;
+:root {
+  --bgprimary: #1b244a;
+  --texttertiary: #9aabd8;
+  --bgsecondary: #080001;
+  --textprimary: #f94f6d;
+  --textsecondary: #eeeeee;
 }
 
-html    {
-    box-sizing: border-box;
-    font-size: 62.5%;
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
 }
 
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background: var(--bgprimary);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: var(--bgprimary);
 }
 
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    max-width: 120rem;
-    margin: 4rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 120rem;
+  margin: 4rem auto;
 }
 
 .team-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.team-name  {
-    color: var(--textsecondary);
-    font-size: 4rem;
-    line-height: 1.5;
-    font-weight: 700;
+.team-name {
+  color: var(--textsecondary);
+  font-size: 4rem;
+  line-height: 1.5;
+  font-weight: 700;
 }
 
 .team-score-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--bgsecondary);
-    width: 24rem;
-    height: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bgsecondary);
+  width: 24rem;
+  height: 12rem;
 }
 
-.team-score-text    {
-    font-family: Cursed Timer Ulil;
-    color: var(--textprimary);
-    font-size: 9rem;
-    font-weight: 400;
-    line-height: 1.5;
+.team-score-text {
+  font-family: Cursed Timer Ulil;
+  color: var(--textprimary);
+  font-size: 9rem;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
-.team-points-buttons    {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.6rem;
-    margin-top: 2.4rem;
+.team-points-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+  margin-top: 2.4rem;
 }
 
 .btn {
-    background: var(--bgprimary);
-    border: 2px solid var(--texttertiary);
-    color: var(--texttertiary);
-    border-radius: 0.5rem;
-    font-family: Cursed Timer Ulil;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.5;
-    padding: 0.4rem 0.8rem;
+  background: var(--bgprimary);
+  border: 2px solid var(--texttertiary);
+  color: var(--texttertiary);
+  border-radius: 0.5rem;
+  font-family: Cursed Timer Ulil;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 0.4rem 0.8rem;
+  transition:
+    border,
+    box-shadow,
+    background 0.2s;
 }
 
-.team-fouls-container   {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 1.6rem;
-    gap: 1.6rem;
+.btn:disabled {
+  background: var(--textprimary);
 }
 
-.team-fouls-text    {
-    font-size: 2.4rem;
-    color: var(--textsecondary);
-    font-weight: 500;
-    line-height: 1.5;
+.btn:hover.btn:active {
+  border: 2px double var(--textsecondary);
+  box-shadow: 0 0 6px 4px var(--textsecondary);
 }
 
-.fouls-box  {
-    font-size: 2rem;
-    font-weight: 400;
-    line-height: 1.5;
-    background: var(--textsecondary);
-    color: var(--bgsecondary);
-    width: 6.4rem;
-    height: 4rem;
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.btn:hover {
+  background: var(--textprimary);
+  box-shadow: 0 0 10px 6px var(--textsecondary);
+}
+
+.team-fouls-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.6rem;
+  gap: 1.6rem;
+}
+
+.team-fouls-text {
+  font-size: 2.4rem;
+  color: var(--textsecondary);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.fouls-box {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  background: var(--textsecondary);
+  color: var(--bgsecondary);
+  width: 6.4rem;
+  height: 4rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .additional-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 4rem;
-    max-width: 120rem;
-    margin: 4rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 4rem;
+  max-width: 120rem;
+  margin: 4rem auto;
 }
 
-.timer  {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    background: var(--textsecondary);
-    width: 16rem;
-    margin: 4rem auto;
-    border-radius: 0.5rem;
-    padding: 0.8rem 1.6rem;
+.timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: var(--textsecondary);
+  width: 16rem;
+  margin: 4rem auto;
+  border-radius: 0.5rem;
+  padding: 0.8rem 1.6rem;
 }
 
 .timer-text {
-    font-family: Cursed Timer Ulil;
-    font-size: 4rem;
-    color: var(--bgprimary);
-    font-weight: 600;
-    line-height: 1.5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
+  font-family: Cursed Timer Ulil;
+  font-size: 4rem;
+  color: var(--bgprimary);
+  font-weight: 600;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
 }
