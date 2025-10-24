@@ -3,6 +3,8 @@ const timerMinutesEl = document.getElementById("timer-minutes");
 const timerSecondsEl = document.getElementById("timer-seconds");
 
 function setupTimer(initialValue?: number): {
+  getTimer: () => number | undefined;
+  getSeconds: () => number | undefined;
   startTimer: () => void;
   pauseTimer: () => void;
   stopTimer: () => void;
@@ -10,6 +12,10 @@ function setupTimer(initialValue?: number): {
 } {
   let timer: number | undefined;
   let seconds: number | undefined = initialValue;
+
+  function getTimer(): number | undefined {
+    return timer;
+  }
 
   function getSeconds(): number | undefined {
     return seconds;
@@ -38,7 +44,7 @@ function setupTimer(initialValue?: number): {
     timer = setInterval((): void => {
       setSeconds((previous: number | undefined): number => {
         if (!previous) {
-          return 12 * 1;
+          return 12 * 60;
         }
 
         return previous - 1;
@@ -92,6 +98,7 @@ function setupTimer(initialValue?: number): {
     setSeconds();
     const secondsAfterReset = getSeconds();
     renderTime(secondsAfterReset);
+
     timer = undefined;
   };
 
@@ -108,7 +115,16 @@ function setupTimer(initialValue?: number): {
     timerSecondsEl!.textContent = ss < 10 ? `0${ss}` : `${ss}`;
   };
 
-  return { startTimer, pauseTimer, stopTimer, resetTimer };
+  return {
+    getTimer,
+    getSeconds,
+    startTimer,
+    pauseTimer,
+    stopTimer,
+    resetTimer,
+  };
 }
 
-export default setupTimer;
+const Timer = setupTimer();
+
+export default Timer;

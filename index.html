@@ -2,6 +2,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Abhijit Kumar" />
+    <meta
+      name="description"
+      content="This is an app that can be used to record the timer and scoreboard of a basketball game"
+    />
     <title>Basketball Timer</title>
     <link rel="stylesheet" href="./src/style.css" />
     <script type="module" async src="./src/main.ts"></script>
@@ -23,15 +28,21 @@
           <h1 class="team-score-text" id="team-home-score">_</h1>
         </div>
         <ul class="team-points-buttons">
-          <li><button class="btn" id="team-home-points-1">+1</button></li>
-          <li><button class="btn" id="team-home-points-2">+2</button></li>
-          <li><button class="btn" id="team-home-points-3">+3</button></li>
+          <li>
+            <button class="btn" id="team-home-points-1" disabled>+1</button>
+          </li>
+          <li>
+            <button class="btn" id="team-home-points-2" disabled>+2</button>
+          </li>
+          <li>
+            <button class="btn" id="team-home-points-3" disabled>+3</button>
+          </li>
         </ul>
         <div class="team-fouls-container">
           <div class="fouls-box" id="team-home-fouls-count"></div>
           <p class="team-fouls-text">Fouls</p>
-          <button class="btn" id="team-home-inc-fouls">⬆️</button>
-          <button class="btn" id="team-home-dec-fouls">⬇️</button>
+          <button class="btn" id="team-home-inc-fouls" disabled>⬆️</button>
+          <button class="btn" id="team-home-dec-fouls" disabled>⬇️</button>
         </div>
       </div>
       <div class="team-container">
@@ -42,23 +53,29 @@
           <h1 class="team-score-text" id="team-guest-score">_</h1>
         </div>
         <ul class="team-points-buttons">
-          <li><button class="btn" id="team-guest-points-1">+1</button></li>
-          <li><button class="btn" id="team-guest-points-2">+2</button></li>
-          <li><button class="btn" id="team-guest-points-3">+3</button></li>
+          <li>
+            <button class="btn" id="team-guest-points-1" disabled>+1</button>
+          </li>
+          <li>
+            <button class="btn" id="team-guest-points-2" disabled>+2</button>
+          </li>
+          <li>
+            <button class="btn" id="team-guest-points-3" disabled>+3</button>
+          </li>
         </ul>
         <div class="team-fouls-container">
           <div class="fouls-box" id="team-guest-fouls-count"></div>
           <p class="team-fouls-text">Fouls</p>
-          <button class="btn" id="team-guest-inc-fouls">⬆️</button>
-          <button class="btn" id="team-guest-dec-fouls">⬇️</button>
+          <button class="btn" id="team-guest-inc-fouls" disabled>⬆️</button>
+          <button class="btn" id="team-guest-dec-fouls" disabled>⬇️</button>
         </div>
       </div>
     </div>
     <div class="additional-buttons">
       <button class="btn" id="btn-start">START</button>
-      <button class="btn" id="btn-pause">PAUSE</button>
-      <button class="btn" id="btn-stop">STOP</button>
-      <button class="btn" id="btn-reset">RESET</button>
+      <button class="btn" id="btn-pause" disabled>PAUSE</button>
+      <button class="btn" id="btn-stop" disabled>STOP</button>
+      <button class="btn" id="btn-reset" disabled>RESET</button>
     </div>
   </body>
 </html>

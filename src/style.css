@@ -1,5 +1,5 @@
 @font-face {
-  src: url("../public/cursedtimerulil.ttf");
+  src: url("../cursedtimerulil.ttf");
   font-family: Cursed Timer Ulil;
 }
 
@@ -91,7 +91,12 @@ body {
 }
 
 .btn:disabled {
-  background: var(--textprimary);
+  filter: grayscale(1);
+}
+
+.btn:disabled.btn:hover {
+  background: var(--bgprimary);
+  box-shadow: none;
 }
 
 .btn:hover.btn:active {
